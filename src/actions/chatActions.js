@@ -5,7 +5,7 @@ export function loadMessages() {
   return function (dispatch) {
     return chatService.getAllMessages()
       .then(messages => {
-        dispatch(loadMessagesSucess(messages))
+        dispatch(loadMessagesSuccess(messages))
       })
       .catch(error => {
         throw(error)
