@@ -1,9 +1,9 @@
-import chatService from "../components/chat/ChatService";
-import * as types from './actionTypes';
+import ChatService from "../components/chat/ChatService";
+import * as types from './ActionTypes';
 
 export function loadMessages() {
   return function (dispatch) {
-    return chatService.getAllMessages()
+    return ChatService.getAllMessages()
       .then(messages => {
         dispatch(loadMessagesSuccess(messages))
       })
