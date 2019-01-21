@@ -3,6 +3,7 @@ import * as types from "../common/ActionTypes";
 import ChatService from './ChatService';
 
 jest.mock("./ChatService.js");
+//https://medium.com/@rickhanlonii/understanding-jest-mocks-f0046c68e53c
 
 describe('ChatActions', () => {
 

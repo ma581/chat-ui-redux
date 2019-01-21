@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 // 'routerMiddleware': the new way of storing route changes with redux middleware since rrV4.
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import rootReducer from '../reducers';
+import rootReducer from '../RootReducer';
 
 export const history = createHistory();
 const connectRouterHistory = connectRouter(history);
@@ -50,8 +50,8 @@ function configureStoreDev(initialState) {
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers').default; // eslint-disable-line global-require
+    module.hot.accept('../', () => {
+      const nextRootReducer = require('../RootReducer').default; // eslint-disable-line global-require
       store.replaceReducer(connectRouterHistory(nextRootReducer));
     });
   }
