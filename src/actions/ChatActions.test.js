@@ -1,15 +1,24 @@
 import {loadMessages, loadMessagesSuccess} from './ChatActions';
 import * as types from "./ActionTypes";
+import ChatService from '../components/chat/ChatService';
 
-jest.mock("../components/chat/ChatService");
+jest.mock("../components/chat/ChatService.js");
 
 describe('ChatActions', () => {
-  it('should fire SUCCESS', () => {
-    // expect(true).toBe(true);
 
-    loadMessages();
-    // expect(ChatService).toHaveBeenCalledTimes(1);
+  beforeEach(() => {
+    jest.clearAllMocks()
+  });
 
+  it('should call ChatService to get all messages and dispatch SUCCESS', () => {
+    const resp = {data: [{name: 'Bob'}]};
+    ChatService.getAllMessages.mockImplementation(() => Promise.resolve(resp));
+    const dispatch = jest.fn();
+
+    loadMessages()(dispatch);
+
+    expect(ChatService.getAllMessages).toHaveBeenCalledTimes(1);
+    // expect(dispatch).toHaveBeenCalledTimes(1);
   });
 
   it('should create LOAD_MESSAGES_SUCCESS action', () => {
@@ -22,10 +31,11 @@ describe('ChatActions', () => {
   });
 
   it('should fire FAILURE', () => {
-    // expect(true).toBe(true);
+    ChatService.getAllMessages.mockImplementation(() => Promise.reject());
+    const dispatch = jest.fn();
 
-    loadMessages();
+    loadMessages()(dispatch);
 
-
+    expect(ChatService.getAllMessages).toHaveBeenCalledTimes(1);
   });
 });

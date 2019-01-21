@@ -8,7 +8,7 @@ export function loadMessages() {
         dispatch(loadMessagesSuccess(messages))
       })
       .catch(error => {
-        console.log('ERROR IN THUNK ACTIONS');
+        console.log('ERROR IN THUNK ACTIONS: ' + error);
         throw(error)
       });
   }
