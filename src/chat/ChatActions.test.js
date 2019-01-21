@@ -1,8 +1,8 @@
 import {loadMessages, loadMessagesSuccess} from './ChatActions';
-import * as types from "./ActionTypes";
-import ChatService from '../components/chat/ChatService';
+import * as types from "../common/ActionTypes";
+import ChatService from './ChatService';
 
-jest.mock("../components/chat/ChatService.js");
+jest.mock("./ChatService.js");
 
 describe('ChatActions', () => {
 

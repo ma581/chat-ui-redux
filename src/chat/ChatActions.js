@@ -1,5 +1,5 @@
-import ChatService from "../components/chat/ChatService";
-import * as types from './ActionTypes';
+import ChatService from "./ChatService";
+import * as types from '../common/ActionTypes';
 
 export function loadMessages() {
   return function (dispatch) {

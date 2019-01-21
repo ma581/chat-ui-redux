@@ -1,4 +1,4 @@
-import * as types from '../actions/ActionTypes';
+import * as types from '../common/ActionTypes';
 
 export default function chatReducer(state= [], action){
   switch (action.type) {
