@@ -8,6 +8,7 @@ export function loadMessages() {
         dispatch(loadMessagesSuccess(messages))
       })
       .catch(error => {
+        console.log('ERRRORRR');
         throw(error)
       });
   }
