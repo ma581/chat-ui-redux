@@ -5,11 +5,7 @@ import {loadMessages} from './ChatActions';
 
 export class ChatPage extends React.Component {
 
-  constructor(props){
-    super(props)
-  }
-
-  componentDidMount(){
+  componentDidMount() {
     this.props.loadMessages();
   }
 
@@ -30,19 +26,11 @@ ChatPage.propTypes = {
   messages: PropTypes.array.isRequired
 };
 
-function mapStateToProps(state) {
-  return {
-    messages: state.chatReducer.messages
-  }
-}
-
-function mapDispatchToProps(dispatch){
-  return {
-    loadMessages: () =>  dispatch(loadMessages())
-  };
-}
+const mapStateToProps = (state) => ({
+  messages: state.chatReducer.messages
+});
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {loadMessages}
 )(ChatPage);

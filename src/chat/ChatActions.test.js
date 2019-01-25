@@ -19,7 +19,6 @@ describe('ChatActions', () => {
     loadMessages()(dispatch);
 
     expect(ChatService.getAllMessages).toHaveBeenCalledTimes(1);
-    // expect(dispatch).toHaveBeenCalledTimes(1);
   });
 
   it('should create LOAD_MESSAGES_SUCCESS action', () => {
