@@ -5,6 +5,10 @@ import {loadMessages} from './ChatActions';
 
 export class ChatPage extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.props.loadMessages();
   }

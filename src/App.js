@@ -14,6 +14,11 @@ import ChatPage from "./chat/ChatPage";
 // component at the top-level.
 
 class App extends React.Component {
+
+  constructor(props){
+    super(props)
+  }
+
   render() {
     return (
       <div>
