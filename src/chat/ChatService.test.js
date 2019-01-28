@@ -2,21 +2,21 @@ import ChatService from './ChatService';
 import nock from 'nock';
 
 describe('ChatService', () => {
-    it('should make a request to localhost', () => {
-      const response = {id: '123ABC'};
-      nock('http://localhost:8080')
-        .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
-        .get('/messages')
-        .reply(200, response);
+  it('should make a request to localhost', () => {
+    const response = {id: '123ABC'};
+    nock('http://localhost:8080')
+      .defaultReplyHeaders({'access-control-allow-origin': '*'})
+      .get('/messages')
+      .reply(200, response);
 
-      return ChatService.getAllMessages().then(data => {
-        expect(data).toEqual(response);
-      })
-    });
+    return ChatService.getAllMessages().then(data => {
+      expect(data).toEqual(response);
+    })
+  });
 
   it('should throw error response', () => {
     nock('http://localhost:8080')
-      .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
+      .defaultReplyHeaders({'access-control-allow-origin': '*'})
       .get('/messages')
       .reply(500, {});
 
