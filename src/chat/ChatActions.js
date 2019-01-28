@@ -1,5 +1,5 @@
 import ChatService from "./ChatService";
-import * as types from '../common/ActionTypes';
+import * as types from './ActionTypes';
 
 export const loadMessages = () => dispatch =>
   ChatService.getAllMessages()
@@ -7,11 +7,13 @@ export const loadMessages = () => dispatch =>
       dispatch(loadMessagesSuccess(messages))
     })
     .catch(error => {
-      console.log('ERROR IN THUNK ACTIONS: ' + error);
-      throw(error)
+      dispatch(loadMessagesFail(error))
     });
 
 
-export const loadMessagesSuccess = (messages) => (
+const loadMessagesSuccess = (messages) => (
   {type: types.LOAD_MESSAGES_SUCCESS, messages});
+
+const loadMessagesFail = (err) => (
+  {type: types.LOAD_MESSAGES_FAIL, err});
 

@@ -10,20 +10,18 @@ describe('ChatService', () => {
         .reply(200, response);
 
       return ChatService.getAllMessages().then(data => {
-        console.log('DATA RECEIVED: ', data);
-        expect(data).toBeDefined();
         expect(data).toEqual(response);
       })
     });
 
-  it('should handle error response', () => {
+  it('should throw error response', () => {
     nock('http://localhost:8080')
       .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
       .get('/messages')
       .reply(500, {});
 
-    return ChatService.getAllMessages().then(data => {
-      expect(data).toBeUndefined();
+    return ChatService.getAllMessages().catch(err => {
+      expect(err).toBeTruthy();
 
     })
   });
