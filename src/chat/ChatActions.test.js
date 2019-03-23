@@ -1,4 +1,4 @@
-import {createMessage, loadMessages, loadMessagesSuccess} from './ChatActions';
+import {createMessage, loadMessages} from './ChatActions';
 import * as types from "./ActionTypes";
 import ChatService from './ChatService';
 import configureMockStore from 'redux-mock-store'
